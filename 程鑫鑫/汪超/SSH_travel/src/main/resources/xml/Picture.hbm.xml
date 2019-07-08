@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Picture" table="picture" schema="travel">
+        <id name="pictureId" column="pictureID">
+            <generator class="native"/>
+        </id>
+        <property name="pictIntroduction" column="pictIntroduction"/>
+        <property name="pictName" column="pictName"/>
+        <many-to-one name="line"
+                     column="lineID"
+                     class="com.hgkj.model.entity.Line"
+                     cascade="all"
+                     lazy="false"
+                     />
+    </class>
+</hibernate-mapping>

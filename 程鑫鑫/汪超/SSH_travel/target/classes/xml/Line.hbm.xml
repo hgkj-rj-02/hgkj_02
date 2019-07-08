@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Line" table="line" schema="travel">
+        <id name="lineId" column="lineID"/>
+        <property name="lineName" column="lineName"/>
+        <property name="lineDays" column="lineDays"/>
+        <property name="lineVehicle" column="lineVehicle"/>
+        <property name="lineIntroduction" column="lineIntroduction"/>
+        <property name="lineReason" column="lineReason"/>
+        <property name="lineArrange" column="lineArrange"/>
+        <property name="linePrice" column="linePrice" />
+        <property name="lineTeamBuy" column="lineTeamBuy" not-null="false"/>
+        <property name="lineTeamBuyPrice" column="lineTeamBuyPrice" not-null="false"/>
+        <property name="lineBeginTime" column="lineBeginTime" not-null="false"/>
+        <property name="lineEndTime" column="lineEndTime" not-null="false"/>
+        <property name="lineOnTime" column="lineOnTime" />
+        <many-to-one name="lineType"
+                     column="lineTypeId"
+                     class="com.hgkj.model.entity.LineType"
+                     cascade="all"
+                     lazy="false"/>
+        <set name="pictureSet" cascade="all" inverse="true" lazy="false">
+            <key column="lineID"/>
+            <one-to-many class="com.hgkj.model.entity.Picture" />
+        </set>
+    </class>
+</hibernate-mapping>
