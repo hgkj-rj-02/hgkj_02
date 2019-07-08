@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Car" table="car" schema="travel">
+        <id name="carId" column="carId">
+            <generator class="native"/>
+        </id>
+        <property name="carTime" column="carTime"/>
+        <many-to-one name="customer"
+                     column="customerId"
+                     class="com.hgkj.model.entity.Customer"
+                     not-null="false"
+                     cascade="save-update"
+                     lazy="false"/>
+        <many-to-one name="line"
+                     column="lineId"
+                     class="com.hgkj.model.entity.Line"
+                     not-null="false"
+                     cascade="save-update"
+                     lazy="false"/>
+    </class>
+</hibernate-mapping>

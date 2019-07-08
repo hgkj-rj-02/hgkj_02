@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Line" table="line" schema="tourism">
+        <id name="lineId" column="lineId"/>
+        <property name="lineName" column="lineName"/>
+        <property name="lineDays" column="lineDays"/>
+        <property name="lineVehicle" column="lineVehicle"/>
+        <property name="lineIntroduction" column="lineIntroduction"/>
+        <property name="lineReason" column="lineReason"/>
+        <property name="lineArrange" column="lineArrange"/>
+        <property name="linePrice" column="linePrice"/>
+        <property name="lineTeamBuy" column="lineTeamBuy"/>
+        <property name="lineTeamBuyPrice" column="lineTeamBuyPrice"/>
+        <property name="lineBeginTime" column="lineBeginTime"/>
+        <property name="lineEndTime" column="lineEndTime"/>
+        <property name="lineOnTime" column="lineOnTime"/>
+        <many-to-one name="linetype"
+                     class="com.hgkj.model.entity.Linetype"
+                     column="lineTypeId"
+                     lazy="false"
+        />
+        <set name="pictureSet" cascade="all"
+             lazy="false"
+             inverse="true">
+            <key column="lineId"></key>
+            <one-to-many class="com.hgkj.model.entity.Picture"/>
+        </set>
+        <set name="carSet" cascade="all" lazy="false" inverse="true">
+            <key column="lineId"></key>
+            <one-to-many class="com.hgkj.model.entity.Car"/>
+        </set>
+    </class>
+</hibernate-mapping>

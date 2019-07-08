@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Customer" table="customer" schema="travel">
+        <id name="customerId" column="customerId">
+            <generator class="native"/>
+        </id>
+        <property name="custAccount" column="custAccount"/>
+        <property name="custName" column="custName"/>
+        <property name="custPassWord" column="custPassWord"/>
+        <property name="custSex" column="custSex"/>
+        <property name="custIdentityId" column="custIdentityId"/>
+        <property name="custTel" column="custTel"/>
+        <property name="custType" column="custType"/>
+        <set name="carSet" cascade="save-update" inverse="true">
+            <key column="customerId"></key>
+            <one-to-many class="com.hgkj.model.entity.Car"/>
+        </set>
+    </class>
+</hibernate-mapping>

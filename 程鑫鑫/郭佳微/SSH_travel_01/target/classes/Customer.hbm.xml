@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hgkj.model.entity.Customer" table="customer" schema="tourism">
+        <id name="customerId" column="customerId">
+            <generator class="native"/>
+        </id>
+        <property name="custAccount" column="custAccount"/>
+        <property name="custName" column="custName"/>
+        <property name="custPassWord" column="custPassWord"/>
+        <property name="custSex" column="custSex"/>
+        <property name="custIdentityId" column="custIdentityId"/>
+        <property name="custTel" column="custTel"/>
+        <property name="custType" column="custType" not-null="false" insert="false" update="false"/>
+        <set name="carSet" lazy="false" cascade="all" inverse="true">
+            <key column="customerId"></key>
+            <one-to-many class="com.hgkj.model.entity.Car"/>
+        </set>
+    </class>
+</hibernate-mapping>
+
+     <!--<property>中的元素dynamic-insert="true" dynamic-update="true":表示insert,update对象的时候，-->
+<!--生成动态的insert,update语句，如果这个字段的值是null就不会加入到语句中去，默认false;-->
+    <!--<property>中的元素insert,update属性:设置为false，在insert,update语句中不包含这个字段，-->
+<!--表示永远不会被插入，默认为true;-->
+    <!--<class>元素dynamic-insert="true" dynamic-update="true":表示把所有的<property>元素的-->
+<!--dynamic-insert， dynamic-update属性设置为true-->

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.fsw.model.entity.Car" table="car" schema="lxtourism">
+        <id name="carId" column="carId">
+            <generator class="native"/>
+        </id>
+        <property name="carId" column="time" />
+        <many-to-one name="customer" column="customerID" lazy="false" class="com.fsw.model.entity.Customer" cascade="all" />
+        <many-to-one name="line" cascade="all" column="lineID" class="com.fsw.model.entity.Line" lazy="false"/>
+    </class>
+</hibernate-mapping>
